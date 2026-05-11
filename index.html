@@ -51,6 +51,15 @@
             z-index: 1000;
         }
 
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
         .nav-logo {
             font-size: 1.2rem;
             font-weight: 700;
@@ -64,14 +73,15 @@
         .nav-links {
             list-style: none;
             display: flex;
-            gap: 20px;
+            gap: 8px;
         }
 
         .nav-links a {
             text-decoration: none;
             color: var(--text-color);
             font-weight: 500;
-            padding: 8px 16px;
+            padding: 6px 12px;
+            font-size: 0.85rem;
             border-radius: 20px;
             transition: var(--transition);
         }
@@ -92,6 +102,18 @@
             color: var(--white);
             padding: 5rem 2rem;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 5px solid rgba(255,255,255,0.2);
+            object-fit: cover;
         }
 
         .hero h1 {
@@ -107,7 +129,7 @@
 
         .container {
             max-width: 1100px;
-            margin: -3rem auto 3rem;
+            margin: -5rem auto 3rem;
             padding: 0 20px;
             position: relative;
         }
@@ -127,11 +149,30 @@
             margin-bottom: 1rem;
         }
 
-        /* Cards Layout (CSS Grid) */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            text-align: left;
+            margin-top: 2rem;
+        }
+
+        .about-item h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+        }
+
+        /* Sections Layout */
+        section {
+            margin-bottom: 4rem;
+        }
+
         .section-title {
             text-align: center;
             margin-bottom: 2rem;
             color: var(--text-color);
+            font-size: 1.8rem;
         }
 
         .card-grid {
@@ -180,6 +221,51 @@
             font-size: 0.95rem;
         }
 
+        .project-meta {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #eee;
+            font-size: 0.9rem;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        /* List items styles */
+        .info-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .info-list li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .info-list i {
+            color: var(--primary-color);
+            width: 20px;
+        }
+
+        /* Skills Tag */
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .skill-tag {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 8px 16px;
+            border-radius: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            font-weight: 500;
+        }
+
         /* Contact Section */
         .contact-section {
             text-align: center;
@@ -187,12 +273,15 @@
             padding: 3rem;
             border-radius: 12px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-top: 3rem;
         }
 
         .contact-links {
             display: flex;
             justify-content: center;
             gap: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
             margin-top: 1.5rem;
         }
 
@@ -233,94 +322,165 @@
             font-size: 0.9rem;
             border-top: 1px solid #e2e8f0;
         }
+
+        @media (max-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            .nav-links {
+                display: none; /* 모바일 대응은 간단하게 처리 */
+            }
+        }
     </style>
 </head>
 <body>
 
 <!-- Top Navigation -->
 <nav class="navbar">
-    <a href="#" class="nav-logo">
-        <i class="fa-solid fa-vr-cardboard"></i> DXP Lab
-    </a>
-    <ul class="nav-links">
-        <li><a href="#" class="active"><i class="fa-solid fa-wand-magic-sparkles"></i> 현재 페이지 (Modern)</a></li>
-        <!-- 이전 페이지 파일명을 old.html 혹은 previous.html 로 맞추어 학생들에게 링크 이동을 시연하시면 됩니다 -->
-        <li><a href="index_initial.html"><i class="fa-solid fa-clock-rotate-left"></i> 이전 페이지 (Basic)</a></li>
-    </ul>
+    <div class="nav-container">
+        <a href="#home" class="nav-logo">
+            <i class="fa-solid fa-user-graduate"></i> My Portfolio
+        </a>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#vision">Vision</a></li>
+            <li><a href="#courses">Courses</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#activities">Activities</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
 </nav>
 
 <!-- Hero Section -->
-<header class="hero">
-    <h1>Hanseob Kim</h1>
-    <p class="role">Professor & Director of DXP Lab</p>
+<header id="home" class="hero">
+    <img src="images.jpg" alt="프로필 이미지" class="profile-img">
+    <h1>[이현수입니다.]</h1>
+    <p class="role">[전공은 외모]</p>
 </header>
 
 <main class="container">
-    <!-- About Section -->
+    <!-- About Me Section -->
     <section class="about-card">
+        <div id="about"></div>
         <h2><i class="fa-solid fa-user-tie"></i> About Me</h2>
-        <p>
-            인간과 컴퓨터의 상호작용(HCI)을 연구하며, 가상현실(VR) 및 증강현실(AR) 환경에서의 
-            사용자 경험 개선과 <strong>사이버멀미(Cybersickness) 저감 기술</strong>에 집중하고 있습니다. 
-            데이터 전처리 및 분석 역량을 바탕으로 국방(National Defense) 및 의료 등 다양한 도메인을 위한 초실감형 몰입 기술을 탐구합니다.
-        </p>
+        <p>[저는 공부 다 잘합니다.]</p>
+        <div class="about-content">
+            <div class="about-item">
+                <h3><i class="fa-solid fa-university"></i> 소속 및 관심분야</h3>
+                <ul class="info-list">
+                    <li>소속: [건양대학교 국방XR학부]</li>
+                    <li>관심분야: []</li>
+                </ul>
+            </div>
+            <div class="about-item">
+                <h3><i class="fa-solid fa-heart"></i> 성격 및 강점</h3>
+                <ul class="info-list">
+                    <li>[강점 첫 번째: 여심저격]</li>
+                    <li>[강점 두 번째: 남심저격]</li>
+                </ul>
+            </div>
+        </div>
     </section>
 
-    <h2 class="section-title">Research Interests</h2>
-    
-    <!-- Cards Section -->
+    <!-- Vision Section -->
+    <section id="vision">
+        <h2 class="section-title">Vision</h2>
+        <div class="about-card" style="margin-top: 0;">
+            <p><strong>진로 목표:</strong> [나아가고자 하는 구체적인 진로 목표를 작성하세요]</p>
+            <p style="margin-top: 15px;"><strong>전문가상:</strong> [어떤 가치를 전달하는 전문가가 되고 싶은지 작성하세요]</p>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="courses">
+        <h2 class="section-title">Courses</h2>
+        <div class="about-card" style="margin-top: 0; text-align: left;">
+            <ul class="info-list">
+                <li><i class="fa-solid fa-book"></i> [현재 수강 중인 과목 1]</li>
+                <li><i class="fa-solid fa-book"></i> [현재 수강 중인 과목 2]</li>
+                <li><i class="fa-solid fa-book"></i> [현재 수강 중인 과목 3]</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <h2 class="section-title">Projects</h2>
+    <div id="projects"></div>
     <section class="card-grid">
-        <!-- Card 1 -->
         <article class="card">
             <img src="https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?auto=format&fit=crop&w=600&q=80" alt="VR Headset" class="card-img">
             <div class="card-content">
-                <i class="fa-solid fa-shield-halved"></i>
-                <h3>XR for National Defense</h3>
-                <p>국방 훈련을 위한 초실감형 메타버스 인터페이스 연구 및 인공지능 기반 인간 검증 데이터셋 구축.</p>
+                <h3>[프로젝트 이름]</h3>
+                <p>[프로젝트에 대한 간단한 설명을 작성하세요]</p>
+                <div class="project-meta">
+                    <span><strong>Role:</strong> [본인의 역할]</span>
+                    <span><strong>Result:</strong> [수행 결과물 및 성과]</span>
+                </div>
             </div>
         </article>
 
-        <!-- Card 2 -->
         <article class="card">
             <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80" alt="Data Analysis" class="card-content-img card-img">
             <div class="card-content">
-                <i class="fa-solid fa-eye"></i>
-                <h3>Cybersickness Mitigation</h3>
-                <p>시선 추적(Eye-tracking) 및 시각/햅틱 피드백을 활용한 자율주행 및 VR 환경 내 사이버멀미 분석 및 저감 솔루션.</p>
-            </div>
-        </article>
-
-        <!-- Card 3 -->
-        <article class="card">
-            <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=600&q=80" alt="Medical Technology" class="card-img">
-            <div class="card-content">
-                <i class="fa-solid fa-bed-pulse"></i>
-                <h3>Digital Therapeutics</h3>
-                <p>병상 환자(Bedridden Patients) 및 교통약자를 위한 VR 기반 치료/편의 기술 및 상호작용 인터페이스 설계.</p>
+                <h3>[프로젝트 이름]</h3>
+                <p>[프로젝트에 대한 간단한 설명을 작성하세요]</p>
+                <div class="project-meta">
+                    <span><strong>Role:</strong> [본인의 역할]</span>
+                    <span><strong>Result:</strong> [수행 결과물 및 성과]</span>
+                </div>
             </div>
         </article>
     </section>
 
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2 class="section-title">Skills</h2>
+        <div class="skill-tags">
+            <span class="skill-tag">Skill 1</span>
+            <span class="skill-tag">Skill 2</span>
+            <span class="skill-tag">Skill 3</span>
+            <span class="skill-tag">Skill 4</span>
+        </div>
+    </section>
+
+    <!-- Activities Section -->
+    <section id="activities">
+        <h2 class="section-title">Activities</h2>
+        <div class="about-card" style="margin-top: 0; text-align: left;">
+            <ul class="info-list">
+                <li><i class="fa-solid fa-users"></i> [동아리 활동 내용]</li>
+                <li><i class="fa-solid fa-microphone"></i> [특강/발표 경험]</li>
+                <li><i class="fa-solid fa-trophy"></i> [공모전/비교과 경험]</li>
+            </ul>
+        </div>
+    </section>
+
     <!-- Contact Section -->
-    <section class="contact-section">
+    <section id="contact" class="contact-section">
         <h2>Let's Connect</h2>
-        <p style="margin-top: 10px; color: var(--text-light);">연구 협력이나 DXP 연구실에 관심이 있으시다면 언제든 연락주세요.</p>
+        <p style="margin-top: 10px; color: var(--text-light);">함께 성장하고 싶은 분들의 연락을 기다립니다.</p>
         <div class="contact-links">
-            <a href="mailto:example@korea.ac.kr" class="btn btn-fill">
-                <i class="fa-solid fa-envelope"></i> Email Me
+            <a href="mailto:your-email@example.com" class="btn btn-fill">
+                <i class="fa-solid fa-envelope"></i> Email
             </a>
             <a href="https://github.com" class="btn btn-outline" target="_blank">
                 <i class="fa-brands fa-github"></i> GitHub
             </a>
             <a href="#" class="btn btn-outline">
-                <i class="fa-solid fa-globe"></i> Lab Website
+                <i class="fa-solid fa-blog"></i> Blog
+            </a>
+            <a href="#" class="btn btn-outline">
+                <i class="fa-brands fa-instagram"></i> SNS
             </a>
         </div>
     </section>
 </main>
 
 <footer>
-    <p>&copy; 2026 Hanseob Kim & DXP Lab. All rights reserved.</p>
+    <p>&copy; 2024 [본인 이름]. All rights reserved.</p>
 </footer>
 
 </body>
